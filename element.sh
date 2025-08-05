@@ -8,9 +8,10 @@ if [[ -z $INPUT ]]; then
   echo "Please provide an element as an argument."
   exit 0
 fi
-# if [[ $INPUT =~ ^[0-9]+$ ]]; then
-#   ELEMENT_DATA=$($PSQL "SELECT * FROM elements FULL JOIN properties USING(atomic_number) FULL JOIN types USING(type_id) WHERE atomic_number=$INPUT;")
-# else
+
+if [[ $INPUT =~ ^[0-9]+$ ]]; then
+  ELEMENT_DATA=$($PSQL "SELECT * FROM elements FULL JOIN properties USING(atomic_number) FULL JOIN types USING(type_id) WHERE atomic_number=$INPUT;")
+else
 
 #   ELEMENT_DATA=$($PSQL "SELECT * FROM elements FULL JOIN properties USING(atomic_number) FULL JOIN types USING(type_id) WHERE symbol='$INPUT' OR name='$INPUT';")
 # fi
